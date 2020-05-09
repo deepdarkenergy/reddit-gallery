@@ -1,18 +1,30 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+    <NavBar ref="navbar" class="navbar" v-on:search="onSearch" />
+    <Gallary :search="searchText" />
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
-import HelloWorld from './components/HelloWorld.vue';
+import Gallary from './components/Gallary.vue';
+import NavBar from './components/NavBar.vue';
 
 export default Vue.extend({
   name: 'App',
   components: {
-    HelloWorld,
+    Gallary,
+    NavBar,
+  },
+  data: function() {
+    return {
+      searchText: 'earthporn',
+    }
+  },
+  methods: {
+    onSearch(searchText:string) {
+      this.searchText = searchText;
+    },
   },
 });
 </script>
